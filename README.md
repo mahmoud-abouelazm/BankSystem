@@ -1,59 +1,116 @@
 # Bank Account Management System
 
 ## Overview
-
-This **Bank Account Management System** is a console application written in C#. It manages various types of bank accounts including **Savings Account**, **Checking Account**, **Credit Account**, and **Investment Account**. The system allows users to perform basic banking operations such as deposits, withdrawals, and interest calculations.
+This **Bank Account Management System** is a simple console application written in **C#**. It allows users to manage different types of bank accounts, including Savings, Checking, Investment, and Credit accounts. Each account type has specific behaviors such as deposits, withdrawals, and interest calculation (for interest-earning accounts).
 
 ## Features
 
-1. **Account Types**:
-   - **Savings Account**: Earns 3% monthly interest.
-   - **Checking Account**: Basic account for everyday transactions, no interest.
-   - **Credit Account**: Supports credit limits and withdrawals beyond available balance.
-   - **Investment Account**: Earns 5% monthly interest.
+- **Create and manage accounts** (Savings, Checking, Investment, Credit).
+- **Deposit and Withdraw** money from accounts.
+- **Interest Calculation** for Savings and Investment accounts.
+- **Handle Exceptions** for invalid operations such as negative withdrawals or exceeding credit limits.
+- **Simple Console Interface** for interaction.
 
-2. **Operations**:
-   - **Deposit**: Add money to an account.
-   - **Withdraw**: Withdraw money from an account if the balance (or credit limit) allows.
-   - **Interest Calculation**: Applies interest to applicable accounts.
-   - **Check Balance**: View current account balance.
+---
 
-3. **Error Handling**: 
-   - Handles insufficient funds for withdrawals.
-   - Ensures non-negative deposit/withdrawal amounts.
+## Table of Contents
 
-## Project Structure
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Account Types](#account-types)
+4. [Interest Calculation](#interest-calculation)
+5. [Example Output](#example-output)
+---
 
-The project follows an object-oriented design using inheritance and interfaces. Below is the class structure:
+## Installation
 
-- **BankAccount (Base Class)**:
-  - Represents a general bank account.
-  - Contains properties for `AccountHolderName` and `Balance`.
-  - Provides methods for `Deposit`, `Withdraw`, and `CheckBalance`.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/bank-system.git
+   ```
 
-- **SavingsAccount (Derived Class)**:
-  - Inherits from `BankAccount`.
-  - Implements `IInterestEarning` to calculate and apply a 3% monthly interest.
+2. **Navigate to the project directory**:
+   ```bash
+   cd bank-system
+   ```
 
-- **CheckingAccount (Derived Class)**:
-  - Inherits from `BankAccount`.
-  - No interest applied, but includes all standard bank operations.
+3. **Open the solution in Visual Studio or any C# IDE**:
+   - Open the `.sln` file.
 
-- **CreditAccount (Derived Class)**:
-  - Inherits from `BankAccount`.
-  - Supports withdrawals beyond available balance up to a defined `CreditLimit`.
+4. **Build the project**:
+   - Compile and run the project from your IDE.
 
-- **InvestmentAccount (Derived Class)**:
-  - Inherits from `BankAccount`.
-  - Implements `IInterestEarning` to calculate and apply a 5% monthly interest.
+---
 
-- **IInterestEarning (Interface)**:
-  - Defines two methods: `CalculateInterest()` and `ApplyInterest()`.
-  - Implemented by interest-earning accounts (Savings and Investment).
+## Usage
 
-## How to Run the Application
+Once the application is running, you can interact with the console to create and manage different types of bank accounts.
 
-### Prerequisites
+1. **Creating an account**: The system will prompt you to enter the account type, account holder's name, and initial balance.
+   
+2. **Deposit/Withdraw**: You can deposit or withdraw money from any account.
 
-- .NET SDK installed (preferably version 6.0 or higher).
-- A C# IDE or editor (such as Visual Studio, Rider, or Visual Studio Code with C# extension).
+3. **Interest Calculation**: For interest-earning accounts, such as **Savings** or **Investment**, interest will be calculated and applied based on the balance.
+
+---
+
+## Account Types
+
+### 1. **Savings Account**
+- Inherits from `BankAccount`.
+- Implements the `IInterestEarning` interface.
+- **3% monthly interest** is applied.
+
+### 2. **Checking Account**
+- Basic bank account with standard operations.
+- No interest is applied.
+
+### 3. **Investment Account**
+- Inherits from `BankAccount`.
+- Implements `IInterestEarning`.
+- **5% monthly interest** is applied.
+
+### 4. **Credit Account**
+- Includes a `CreditLimit` property.
+- Allows withdrawals beyond the balance but within the credit limit.
+  
+---
+
+## Interest Calculation
+
+Interest is automatically applied to Savings and Investment accounts using the `IInterestEarning` interface.
+
+- **SavingsAccount**: Applies **3% monthly interest**.
+- **InvestmentAccount**: Applies **5% monthly interest**.
+
+```csharp
+public interface IInterestEarning
+{
+    decimal CalculateInterest();
+    void ApplyInterest();
+}
+```
+
+**Example:**
+
+For a **SavingsAccount** with a balance of `$1000`, the interest applied will be `$30` (3% of $1000).
+
+---
+
+## Example Output
+
+```plaintext
+Creating a SavingsAccount for John Doe with initial balance: $1000.00
+Deposit $500 into SavingsAccount. New Balance: $1500.00
+Withdraw $200 from SavingsAccount. New Balance: $1300.00
+Applying 3% interest. Interest applied: $39.00. New Balance: $1339.00
+```
+---
+
+## Contact
+
+For questions or suggestions, contact:
+
+- **Email**: mahmoud.reda.abouelazm@gmail.com
+
+---
