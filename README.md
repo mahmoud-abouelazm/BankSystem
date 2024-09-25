@@ -26,12 +26,12 @@ This **Bank Account Management System** is a simple console application written 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/bank-system.git
+   git clone https://github.com/mahmoud-abouelazm/BankSystem.git
    ```
 
 2. **Navigate to the project directory**:
    ```bash
-   cd bank-system
+   cd BankSystem
    ```
 
 3. **Open the solution in Visual Studio or any C# IDE**:
